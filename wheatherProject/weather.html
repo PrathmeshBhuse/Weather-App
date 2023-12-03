@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>weather.com</title>
+    <link rel="stylesheet" href="weather.css">
+</head>
+
+<body>
+    <div class="frame">
+        <div class="search">
+            <input type="text" placeholder="Enter City" spellcheck="false">
+            <button><img src="images/search.png" alt=""></button>
+        </div>
+        <div class="weather">
+            <img src="images/rain.png" alt="" class="weathericon">
+            <h1 class="temp">43°C</h1>
+            <h2 class="city">Akola</h2>
+
+            <div class="details">
+                <div class="col">
+                    <img src="images/humidity.png" alt="">
+                    <p class="humidity">50%</p>
+                    <p class="text">Humidity</p>
+                </div>
+                <div class="col">
+                    <img src="images/wind.png" alt="">
+                    <p class="wind">12 km/h</p>
+                    <p class="text"> Wind Speed</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+    <script>
+        const apiKey = "747b6c26cb7ce9f569145716a9cf4573";
+        const apiUrl = "https://api.openweathermap.org/data/2.5/weather?q=amravati&units=metric";
+
+        async function checkWeather(){
+            const responce = await fetch(apiUrl + `&appid=${apiKey}`)
+            var data = await responce;
+            console.log(data)
+
+            document.querySelector(".city").innerHTML = data
+            document.querySelector(".temp").innerHTML = data.
+            document.querySelector(".wind").innerHTML = data.main.wind
+            document.querySelector(".humidity").innerHTML = data.main.humidity
+
+
+
+
+        }
+        checkWeather()
+
+    </script>
+</body>
+
+</html>
